@@ -14,3 +14,13 @@ Open `OSGeo4W Shell` installed with QGIS as `Administrator` and type:
  $ python -m pip install --upgrade pip
  $ python -m pip install pandas
 ```
+
+
+___
+### Changeset
+
+##### Changeset 01/2022
+- Fixed the export feature type error issue
+
+##### Changeset 02/2022
+- Fixed the name of Spatial kernel in the Geographically Weighted Regression (GWR) Results in the SUMMARY TXT did not change issue
