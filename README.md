@@ -18,7 +18,8 @@ Open `OSGeo4W Shell` installed with QGIS as `Administrator` and type:
 If you are using ***QGIS 3.22.3***
 no module named 'scipy'
 Open `OSGeo4W Shell` installed with QGIS as `Administrator` and type:
-```sh
+```sh 
+ $ python -m ensurepip --default -pip
  $ python -m pip install --upgrade pip
  $ python -m pip install scipy
 ```
