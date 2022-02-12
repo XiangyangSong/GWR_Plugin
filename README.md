@@ -35,7 +35,7 @@ $ python -m pip install --upgrade pip
 $ python -m pip install spglm
 ```
 
- 
+ - ModuleNotFoundError: No module named 'scipy'
 ```sh 
 $ python -m pip install scipy
 ```
