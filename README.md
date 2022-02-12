@@ -22,6 +22,7 @@ Open `OSGeo4W Shell` installed with QGIS as `Administrator` and type:
  $ python -m ensurepip --default -pip
  $ python -m pip install --upgrade pip
  $ python -m pip install scipy
+ $ python -m pip install spgim
 ```
 
 ___
