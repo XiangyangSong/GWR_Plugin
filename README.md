@@ -23,8 +23,6 @@ Open `OSGeo4W Shell` installed with QGIS as `Administrator` and type:
  $ python -m pip install --upgrade pip
  $ python -m pip install scipy
  $ python -m pip install spglm
- $ python -m pip install geos=3.7.1
- $ python -m pip install shapely
 ```
 
 ___
