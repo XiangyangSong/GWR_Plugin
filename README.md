@@ -6,7 +6,7 @@ ___
 
 **1)** Install dependencies:
 
-If you are using **QGIS 3.16**:
+####If you are using **QGIS 3.16**:
 
 Open `OSGeo4W Shell` installed with QGIS as `Administrator` and type:
 ```sh
@@ -15,6 +15,14 @@ Open `OSGeo4W Shell` installed with QGIS as `Administrator` and type:
  $ python -m pip install pandas
 ```
 
+####If you are using ***QGIS 3.22.3***
+no module named 'scipy'
+Open `OSGeo4W Shell` installed with QGIS as `Administrator` and type:
+```sh
+ $ py3_env
+ $ python -m pip install --upgrade pip
+ $ python -m pip install scipy
+```
 
 ___
 ### Changeset
