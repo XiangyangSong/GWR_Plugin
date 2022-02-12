@@ -20,12 +20,25 @@ no module named 'scipy'
 Open `OSGeo4W Shell` installed with QGIS as `Administrator` and type:
 ```sh 
  $ cd C:\Program Files\QGIS 3.16\apps\Python37
- $ python -m ensurepip
- $ python -m pip install --upgrade pip
- $ python -m pip install scipy
- $ python -m pip install spglm
+```
+ 
+```sh 
+$ python -m ensurepip
+```
+ 
+```sh 
+$ python -m pip install --upgrade pip
+```
+  
+ModuleNotFoundError: No module named 'spglm'
+```sh 
+$ python -m pip install spglm
 ```
 
+ 
+```sh 
+$ python -m pip install scipy
+```
 ___
 ### Changeset
 
