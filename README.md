@@ -30,7 +30,7 @@ $ python -m ensurepip
 $ python -m pip install --upgrade pip
 ```
   
-ModuleNotFoundError: No module named 'spglm'
+- ModuleNotFoundError: No module named 'spglm'
 ```sh 
 $ python -m pip install spglm
 ```
