@@ -21,7 +21,7 @@ Open `OSGeo4W Shell` installed with QGIS as `Administrator` and type:
 ```sh 
  $ cd C:\Program Files\QGIS 3.16\apps\Python37
 ```
- 
+- ModuleNotFoundError: No module named 'pip'
 ```sh 
 $ python -m ensurepip
 $ python -m pip install --upgrade pip
