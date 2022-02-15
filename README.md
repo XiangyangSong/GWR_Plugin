@@ -54,7 +54,7 @@ A new icon for Hotspot Analysis will appear on the QGIS main panel and in the Ve
 **3)** If you are interested in the **latest unreleased version**:
 
 Download the zip folder of the repository at:
-https://github.com/XiangyangSong/gwr_processing/archive/refs/heads/main.zip
+https://github.com/XiangyangSong/gwr_processing/archive/refs/heads/qgis3gwr1.zip
 
 Open QGIS 3 and go to `Plugins` -> `Install from ZIP`
 
