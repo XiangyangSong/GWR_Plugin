@@ -101,7 +101,7 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         self.addParameter(
                     QgsProcessingParameterFile(
                         name = 'location_csv',
-                        description = 'Location csv',
+                        description = 'Open CSV file containing geographical coordinates',
                         defaultValue=None,
                         optional = False
                     )
@@ -155,7 +155,7 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         self.addParameter(
             QgsProcessingParameterField(
                 name = 'dependent_field',
-                description = 'Dependent Field', 
+                description = 'Select one dependent field', 
                 type=QgsProcessingParameterField.Any, 
                 parentLayerParameterName='source_layer', 
                 allowMultiple=False, 
@@ -168,7 +168,7 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         self.addParameter(
             QgsProcessingParameterField(
                 name = 'explanatory_field',
-                description = 'Explanatory Field', 
+                description = 'Select one or multiple explanatory fields', 
                 type=QgsProcessingParameterField.Any, 
                 parentLayerParameterName='source_layer', 
                 allowMultiple=True, 
@@ -181,7 +181,7 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         self.addParameter(
             QgsProcessingParameterEnum(
                 name = 'kernel_type',
-                description = 'Spatial Kernel Type',
+                description = 'Select spatial kernel type',
                 options = ['Adaptive','Fixed'],
                 allowMultiple = False, 
                 #defaultValue = 'Adaptive',
@@ -194,7 +194,7 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         self.addParameter(
             QgsProcessingParameterEnum(
                 name = 'kernel_function',
-                description = 'Spatial Kernel Function',
+                description = 'Select spatial kernel function',
                 options = ['Gaussian', 'Bisquare', 'Exponential'],
                 allowMultiple = False, 
                 #defaultValue = 'bisquare',
@@ -207,7 +207,7 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         self.addParameter(
             QgsProcessingParameterEnum(
                 name = 'bandwidth_searching',
-                description = 'Bandwidth Searching',
+                description = 'Select bandwidth searching method',
                 options = ['Golden Section', 'Interval'],
                 allowMultiple = False, 
                 #defaultValue = 'Golden Section',
@@ -220,7 +220,7 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         self.addParameter(
             QgsProcessingParameterEnum(
                 name = 'bandwidth_searching_criterion',
-                description = 'Criterion',
+                description = 'Select criterion for bandwidth searching',
                 options = ['AICc', 'AIC','BIC','CV'],
                 allowMultiple = False, 
                 #defaultValue = 'Golden Section',
@@ -233,7 +233,7 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         self.addParameter(
             QgsProcessingParameterNumber(
                 name = 'bw_min',
-                description = 'Bandwidth Min',
+                description = 'Bandwidth Min (Input only if equal interval method is selected)',
                 type = QgsProcessingParameterNumber.Double, 
                 defaultValue = None, 
                 optional = True, 
@@ -245,7 +245,7 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         self.addParameter(
             QgsProcessingParameterNumber(
                 name = 'bw_max',
-                description = 'Bandwidth Max',
+                description = 'Bandwidth Max (Input only if equal interval method is selected)',
                 type = QgsProcessingParameterNumber.Double, 
                 defaultValue = None, 
                 optional = True, 
@@ -257,7 +257,7 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         self.addParameter(
             QgsProcessingParameterNumber(
                 name = 'bw_interval',
-                description = 'Interval Value',
+                description = 'Interval Value (Input only if equal interval method is selected)',
                 type = QgsProcessingParameterNumber.Integer, 
                 defaultValue = None, 
                 optional = True, 
@@ -574,3 +574,6 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
 
     def createInstance(self):
         return GWRAlgorithm()
+    
+    def shortHelpString(self): 
+        return '''<html><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Document</title><style>        ol {            padding-left: 0.25em;            margin-left: 0.25em;        }        ol > li::marker {            font-weight: bold;        }        .interval_inputs {            margin-left: 1.25em;            counter-reset: list;        }        .interval_inputs > li {            list-style: none;        }        .interval_inputs > li:before {            content: counter(list, number)")";            counter-increment: list;            font-weight: bold;        }        .kernel_type {            display: block;            max-width: 90vw;            max-height: 250px;        }</style></head><body><h2>Algorithm Description</h2><p>Geographically Weighted Regression (GWR) is a spatial regression technique used to evaluate a local model of the         variable or process by fitting a regression equation to every feature in the dataset. Generally, it is a local         form of linear regression used to model spatially varying relationships.</p><h3>Input Layer</h3><p>Select the input layer containing all the fields used to build local regression model.</p><h3>Input Parameters</h3><p>Select only one dependent variable and one or multiple explanatory variables (a.k.a. independent variables).</p><ul><ol><li><b>Dependent Variable</b>: The field containing values dependent on explanatory variable(s) in regression model</li><li><b>Explanatory Variable</b>: The field(s) representing independent explanatory variable(s) in regression model.</li></ol></ul><h3>Spatial Kernel Type</h3><p>Select the kernel type, either fixed or adaptive, usually depending on how observations distribute in the region of interest.</p><ul><ol><li><b>Fixed</b>: The spatial context used to solve each local regression analysis is a fixed                distance. Fixed kernel type is suggested when observations distribute evenly in the research region.</li><li><b>Adaptive</b>: The spatial context is a specified number of nearest neighbors.                Where feature distribution is dense, the spatial context is smaller, while where feature distribution is                sparse, the spatial context is larger.</li></ol></ul><h3>Spatial Kernel Function</h3><p>Select one kernel function to calculate weight matrix for each observation.</p><ul><ol><li><b>Gaussian</b><li><b>Exponential</b><li><b>Bisquare</b></ol></ul><p><i><b>Note:</b>A potential issue with the Gaussian and Exponential kernel functions is that all observations retain non-zero        weight, regardless of their distance from the calibration location. This means that even faraway observations        can remain influential for moderate-to-large bandwidth parameters.<p>To avoid the issue above, the default kernel function is set to bi-square kernel. Moreover, bi-square kernel         has a much more intuitive interpretation, where the bandwidth parameter is the distance or number of nearest neighbors         away in space so that the remaining observations will not affect in searching optimal bandwidth parameters.</p></i></p><h3>Bandwidth Searching</h3><p>Specify which method to use in order to search for an optimal bandwidth.</p><ul><ol><li><p><b>Golden Section Search Method</b>: The golden section search is a technique for finding an extremum (minimum or maximum) of a                function inside a specified interval. In GWR this method helps searching for the optimal bandwidth.</p></li><li><p><b>Equal Interval Method</b>: The equal interval is an intuitive method to search for the optimal bandwidth since it simply                checks each bandwidth between the predefined minimum and maximum bandwidth based on a fixed user-input interval.<b>Therefore,                 if user chooses to use equal interval method, it is mandatory to fill the three optional fields</b>:<ol class="interval_inputs"><li><b>Bandwidth Min</b>: Bandwidth searching will start from this number.</li><li><b>Bandwidth Max</b>: Bandwidth searching will end before this number.</li><li><b>Interval</b>: Interval increment used in bandwidth search.</li></ol><b><i><p><font color="red">Important Note: Pay attention to the units of bandwidth, meters for fixed kernel type, number of nearest neighbors for adaptvie one.</font></p></b></i></li></ol></ul><h3>Bandwidth Searching Criterion</h3><p>Specify how the extent of the kernel should be determined.</p><ul><ol><li><b>CV</b>: Cross validation criterion compares the model residuals based on different bandwidths and chooses the                optimal solution.</li><li><b>AIC</b>: Akaike information criterion estimates the quality of each model, relative to each of the other                models.</li><li><b>AICc</b>: Corrected Akaike information criterion is an improved version of AIC, as well as the mostly                suggested one, since it penalizes smaller bandwidths that result in more complex models that consume                more degrees of freedom.</li><li><b>BIC</b>: Bayesian information criterion shares the same methodology with AIC, but performs better at model selection.</li></ol></ul><p align="right">Plugin Authors: Gao & Song</p><p align="right">Algorithm Version: 1.2</p></body></html>'''
