@@ -4,52 +4,14 @@ A QGIS plugin for Geographically Weighted Regression(GWR).
 ___
 ### Installation - Windows
 
-Download the gwr_processing.zip to your computer, unzip the file and put it to your plugin folder. For example, 'C:\Users\Administrator\AppData\Roaming\QGIS\QGIS3\profiles\default\python\plugins'
-
-**1)** Install dependencies:
-
-If you are using **QGIS 3.16**:
-
-Open `OSGeo4W Shell` installed with QGIS as `Administrator` and type:
-```sh 
- $ cd C:\Program Files\QGIS 3.16\apps\Python37
-```
-- ModuleNotFoundError: No module named 'pip'
-```sh 
-$ python -m ensurepip
-$ python -m pip install --upgrade pip
-```
-
-
-If you are using ***QGIS 3.22.3***
-Open `OSGeo4W Shell` installed with QGIS as `Administrator` and type:
-```sh 
- $ cd C:\Program Files\QGIS 3.16\apps\Python37
-```
-- ModuleNotFoundError: No module named 'pip'
-```sh 
-$ python -m ensurepip
-$ python -m pip install --upgrade pip
-```
-  
-- ModuleNotFoundError: No module named 'spglm'
-```sh 
-$ python -m pip install spglm
-```
-
- - ModuleNotFoundError: No module named 'scipy'
-```sh 
-$ python -m pip install scipy
-```
-
-**2)** Open QGIS:
+**1)** Open QGIS:
 
 Go to `Plugins` -> `Manage and Install plugins` -> `Settings` -> `Show also experimental plugins` 
 
 In `All plugins` tab, look for `Geographically Weighted Regression` and tick the checkbox.  
-A new icon for Hotspot Analysis will appear on the QGIS main panel and in the Vector Menu.
+A new icon for Geographically Weighted Regression will appear on the QGIS main panel and in the Vector Menu.
 
-**3)** If you are interested in the **latest unreleased version**:
+**2)** Open QGIS:
 
 Download the zip folder of the repository at:
 https://github.com/XiangyangSong/gwr_processing/archive/refs/heads/qgis3gwr1.zip
@@ -63,6 +25,17 @@ Select the downloaded zip folder and press `Install plugin`. The icon for the GW
  $ python -m pip install scipy -U
  $ python -m pip install spglm -U
  $ python -m pip install shapely -U
+```
+
+In case of does not find python, open `OSGeo4W Shell` installed with QGIS3 as `Administrator` and type(e.g. jump to the python environment directory in QGIS folder where installed in your computer):
+```sh 
+ $ cd C:\Program Files\QGIS 3.16\apps\Python37
+```
+If there is a error of pip, open `OSGeo4W Shell` installed with QGIS3 as `Administrator` and type:
+- ModuleNotFoundError: No module named 'pip'
+```sh 
+$ python -m ensurepip
+$ python -m pip install --upgrade pip
 ```
 
 
