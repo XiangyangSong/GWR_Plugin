@@ -54,11 +54,11 @@ A new icon for Hotspot Analysis will appear on the QGIS main panel and in the Ve
 **3)** If you are interested in the **latest unreleased version**:
 
 Download the zip folder of the repository at:
-https://github.com/danioxoli/HotSpotAnalysis_Plugin/archive/refs/heads/qgis3pysal2.zip
+https://github.com/XiangyangSong/gwr_processing/archive/refs/heads/main.zip
 
 Open QGIS 3 and go to `Plugins` -> `Install from ZIP`
 
-Select the downloaded zip folder and press `Install plugin`. The icon for the Hotspot Analysis plugin will appear in the list of the installed plugins. Tick the Checkbox to activate it. The plugin will appear in the Vector menu.
+Select the downloaded zip folder and press `Install plugin`. The icon for the GWR plugin will appear in the list of the installed plugins. Tick the Checkbox to activate it. The plugin will appear in the Vector menu.
 
 **Note**: In case of errors rising from the Scipy package, open `OSGeo4W Shell` installed with QGIS3 as `Administrator` and type:
 ```sh
