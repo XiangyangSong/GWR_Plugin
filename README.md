@@ -27,7 +27,7 @@ Select the downloaded zip folder and press `Install plugin`. The icon for the GW
  $ python -m pip install shapely -U
 ```
 
-In case of does not find python, open `OSGeo4W Shell` installed with QGIS3 as `Administrator` and type(e.g. jump to the python environment directory in QGIS folder where installed in your computer):
+In case of does not find python, open `OSGeo4W Shell` installed with QGIS3 as `Administrator` and type(e.g. jump to the python environment directory in QGIS folder where in your computer):
 ```sh 
  $ cd C:\Program Files\QGIS 3.16\apps\Python37
 ```
