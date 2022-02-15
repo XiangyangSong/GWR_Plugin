@@ -4,16 +4,24 @@ A QGIS plugin for Geographically Weighted Regression(GWR).
 ___
 ### Installation - Windows
 
+Download the gwr_processing.zip to your computer, unzip the file and put it to your plugin folder. For example, 'C:\Users\Administrator\AppData\Roaming\QGIS\QGIS3\profiles\default\python\plugins'
+
 **1)** Install dependencies:
 
 If you are using **QGIS 3.16**:
 
 Open `OSGeo4W Shell` installed with QGIS as `Administrator` and type:
 ```sh
- $ py3_env
  $ python -m pip install --upgrade pip
  $ python -m pip install pandas
 ```
+
+- ModuleNotFoundError: No module named 'spglm'
+```sh 
+$ python -m pip install spglm
+```
+
+
 
 If you are using ***QGIS 3.22.3***
 Open `OSGeo4W Shell` installed with QGIS as `Administrator` and type:
