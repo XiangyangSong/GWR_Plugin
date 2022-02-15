@@ -56,6 +56,7 @@ ___
 - Fixed the unit problem of fixed and adaptive kernel type. The unit for fixed kernel type is "meters" instead of kilometers in our plugin. 
 - Updated ShortHelpString.html document to provide more information on help page in the plugin, with an improved layout.
 
+___
 ##### License
 
 _The Geographically Weighted Regression(GWR) Plugin is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation_
