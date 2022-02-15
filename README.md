@@ -60,6 +60,6 @@ ___
 
 _The Geographically Weighted Regression(GWR) Plugin is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation_
 
-Copyright © 2021 Xiangyang Song - [Politecnico Di Milano](https://www.polimi.it/) | Gabriele Prestifilippo - [Politecnico Di Milano](https://www.polimi.it/)
+Copyright © 2021 Jiawei Gao - [Politecnico Di Milano](https://www.polimi.it/) | Xiangyang Song - [Politecnico Di Milano](https://www.polimi.it/) 
 
 E-mail: xiangyang.song@mail.polimi.it  and  jiawei.gao@mail.polimi.it
