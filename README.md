@@ -11,10 +11,15 @@ Download the gwr_processing.zip to your computer, unzip the file and put it to y
 If you are using **QGIS 3.16**:
 
 Open `OSGeo4W Shell` installed with QGIS as `Administrator` and type:
-```sh
- $ python -m pip install --upgrade pip
- $ python -m pip install pandas
+```sh 
+ $ cd C:\Program Files\QGIS 3.16\apps\Python37
 ```
+- ModuleNotFoundError: No module named 'pip'
+```sh 
+$ python -m ensurepip
+$ python -m pip install --upgrade pip
+```
+
 
 If you are using ***QGIS 3.22.3***
 Open `OSGeo4W Shell` installed with QGIS as `Administrator` and type:
