@@ -39,7 +39,10 @@ ___
 ### Changeset
 
 ##### Changeset 01/2022
-- Fixed the export feature type error issue
+- Fixed an issue of export feature type error. 
 
 ##### Changeset 02/2022
-- Fixed the name of Spatial kernel in the Geographically Weighted Regression (GWR) Results in the SUMMARY TXT did not change issue
+- Fixed an issue that the name of spatial kernel in the Geographically Weighted Regression (GWR) remained unchanged in the output summary .txt file. 
+- Changed the way of importing geographical coordinates from selecting coordinates attributes inside shapefile layer to opening .csv sheet file. As a result, user is required to proceed one additional step after opening the .csv file: mannually type the names of two fields indicating coordinates x and y in the .csv file opened. 
+- Fixed the unit problem of fixed and adaptive kernel type. The unit for fixed kernel type is "meters" instead of kilometers in our plugin. 
+- Updated ShortHelpString.html document to provide more information on help page in the plugin, with an improved layout.
