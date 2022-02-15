@@ -31,11 +31,12 @@ A new icon for Geographically Weighted Regression will appear on the QGIS main p
  $ python -m pip install shapely -U
 ```
 
-In case of does not find python, open `OSGeo4W Shell` installed with QGIS3 as `Administrator` and type(e.g. jump to the python environment directory in QGIS folder where in your computer):
+In case of does not find python, open `OSGeo4W Shell` installed with QGIS3 as `Administrator` and type:
+(e.g. jump to the python environment directory in QGIS folder where in your computer):
 ```sh 
  $ cd C:\Program Files\QGIS 3.16\apps\Python37
 ```
-If there is a error of pip, open `OSGeo4W Shell` installed with QGIS3 as `Administrator` and type:
+If there is an error of pip, open `OSGeo4W Shell` installed with QGIS3 as `Administrator` and type:
 - ModuleNotFoundError: No module named 'pip'
 ```sh 
 $ python -m ensurepip
