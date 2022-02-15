@@ -55,3 +55,12 @@ ___
 - Changed the way of importing geographical coordinates from selecting coordinates attributes inside shapefile layer to opening .csv sheet file. As a result, user is required to proceed one additional step after opening the .csv file: mannually type the names of two fields indicating coordinates x and y in the .csv file opened. 
 - Fixed the unit problem of fixed and adaptive kernel type. The unit for fixed kernel type is "meters" instead of kilometers in our plugin. 
 - Updated ShortHelpString.html document to provide more information on help page in the plugin, with an improved layout.
+
+##### License
+
+_The Geographically Weighted Regression(GWR) Plugin is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation_
+
+Copyright © 2021 Xiangyang Song - [Politecnico Di Milano](https://www.polimi.it/) | Gabriele Prestifilippo - [Politecnico Di Milano](https://www.polimi.it/)
+
+E-mail: xiangyang.song@mail.polimi.it
+        jiawei.gao@mail.polimi.it
