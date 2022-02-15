@@ -16,13 +16,6 @@ Open `OSGeo4W Shell` installed with QGIS as `Administrator` and type:
  $ python -m pip install pandas
 ```
 
-- ModuleNotFoundError: No module named 'spglm'
-```sh 
-$ python -m pip install spglm
-```
-
-
-
 If you are using ***QGIS 3.22.3***
 Open `OSGeo4W Shell` installed with QGIS as `Administrator` and type:
 ```sh 
@@ -60,10 +53,10 @@ Open QGIS 3 and go to `Plugins` -> `Install from ZIP`
 
 Select the downloaded zip folder and press `Install plugin`. The icon for the GWR plugin will appear in the list of the installed plugins. Tick the Checkbox to activate it. The plugin will appear in the Vector menu.
 
-**Note**: In case of errors rising from the Scipy package, open `OSGeo4W Shell` installed with QGIS3 as `Administrator` and type:
+**Note**: In case of errors rising from the Scipy,Spglm, package, open `OSGeo4W Shell` installed with QGIS3 as `Administrator` and type:
 ```sh
- $ py3_env
  $ python -m pip install scipy -U
+ $ python -m pip install spglm -U
 ```
 
 
