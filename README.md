@@ -43,6 +43,13 @@ $ python -m pip install spglm
 ```sh 
 $ python -m pip install scipy
 ```
+
+**2)** Open QGIS:
+
+Go to `Plugins` -> `Manage and Install plugins` -> `Settings` -> `Show also experimental plugins` 
+
+In `All plugins` tab, look for `Geographically Weighted Regression` and tick the checkbox.  
+A new icon for Hotspot Analysis will appear on the QGIS main panel and in the Vector Menu.
 ___
 ### Changeset
 
