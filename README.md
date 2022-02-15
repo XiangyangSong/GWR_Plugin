@@ -58,10 +58,11 @@ Open QGIS 3 and go to `Plugins` -> `Install from ZIP`
 
 Select the downloaded zip folder and press `Install plugin`. The icon for the GWR plugin will appear in the list of the installed plugins. Tick the Checkbox to activate it. The plugin will appear in the Vector menu.
 
-**Note**: In case of errors rising from the Scipy,Spglm, package, open `OSGeo4W Shell` installed with QGIS3 as `Administrator` and type:
+**Note**: In case of errors rising from the Scipy,Spglm,Shapely package, open `OSGeo4W Shell` installed with QGIS3 as `Administrator` and type:
 ```sh
  $ python -m pip install scipy -U
  $ python -m pip install spglm -U
+ $ python -m pip install shapely -U
 ```
 
 
