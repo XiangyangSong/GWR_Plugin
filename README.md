@@ -2,6 +2,9 @@
 A QGIS plugin for Geographically Weighted Regression(GWR).
 
 **THIS PLUGIN VERSION IS BASED ON MGWR >= 2.1.2** [previous version here](https://github.com/pysal/mgwr/)
+
+**Reference Article:**
+[*"MGWR: A Python Implementation of Multiscale GeographicallyWeighted Regression for Investigating Process Spatial Heterogeneity and Scale"*](https://www.mdpi.com/2220-9964/8/6/269/pdf)
 ___
 ### Installation - Windows
 
