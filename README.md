@@ -1,4 +1,5 @@
 # Geographically Weighted Regression(GWR) Plugin for QGIS
+https://www.cnblogs.com/xuanbjut/p/14341070.html
 A QGIS plugin for Geographically Weighted Regression(GWR).
 
 **THIS PLUGIN VERSION IS BASED ON MGWR >= 2.1.2** [previous version here](https://github.com/pysal/mgwr/)
