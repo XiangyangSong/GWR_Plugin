@@ -4,9 +4,6 @@ A QGIS plugin for Geographically Weighted Regression(GWR).
 **THIS PLUGIN VERSION IS BASED ON MGWR >= 2.1.2** [previous version here](https://github.com/pysal/mgwr/)
 
 ***Note: The correct version of MGWR package is already included in the plugin code, hence users no need to do pip install mgwr, where it will install the wrong version of MGWR.***
-
-**Reference Article:**
-[*"MGWR: A Python Implementation of Multiscale GeographicallyWeighted Regression for Investigating Process Spatial Heterogeneity and Scale"*](https://www.mdpi.com/2220-9964/8/6/269/pdf)
 ___
 ### Installation - Windows
 
@@ -58,6 +55,10 @@ ___
 - Fixed the unit problem of fixed and adaptive kernel type. The unit for fixed kernel type is "meters" instead of kilometers in our plugin. 
 - Updated ShortHelpString.html document to provide more information on help page in the plugin, with an improved layout.
 
+___
+**Reference Article**
+
+[*"MGWR: A Python Implementation of Multiscale GeographicallyWeighted Regression for Investigating Process Spatial Heterogeneity and Scale"*](https://www.mdpi.com/2220-9964/8/6/269/pdf)
 ___
 ##### License
 
