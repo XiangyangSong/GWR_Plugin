@@ -4,14 +4,7 @@ A QGIS plugin for Geographically Weighted Regression(GWR).
 ___
 ### Installation - Windows
 
-**1)** Install plugin in QGIS:
-
-Open QGIS 3 and go to `Plugins` -> `Manage and Install plugins` -> `Settings` -> `Show also experimental plugins` 
-
-In `All plugins` tab, look for `Geographically Weighted Regression` and tick the checkbox.  
-A new icon for Geographically Weighted Regression will appear on the QGIS main panel and in the Vector Menu.
-
-**2)** Install plugin from github:
+**1)** Install plugin from github:
 
 Download the zip folder of the repository at:
 https://github.com/XiangyangSong/gwr_processing/archive/refs/heads/qgis3gwr1.zip
@@ -19,6 +12,14 @@ https://github.com/XiangyangSong/gwr_processing/archive/refs/heads/qgis3gwr1.zip
 Open QGIS 3 and go to `Plugins` -> `Install from ZIP`
 
 Select the downloaded zip folder and press `Install plugin`. The icon for the GWR plugin will appear in the list of the installed plugins. Tick the Checkbox to activate it. The plugin will appear in the 'Processing Toolbox' panel.
+
+
+**2)** Install plugin in QGIS:
+
+Open QGIS 3 and go to `Plugins` -> `Manage and Install plugins` -> `Settings` -> `Show also experimental plugins` 
+
+In `All plugins` tab, look for `Geographically Weighted Regression` and tick the checkbox.  
+A new icon for Geographically Weighted Regression will appear on the QGIS main panel and in the Vector Menu.
 
 **Note**: In case of errors rising from the Scipy,Spglm,Shapely package, open `OSGeo4W Shell` installed with QGIS3 as `Administrator` and type:
 ```sh
