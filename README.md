@@ -22,7 +22,7 @@ Select the downloaded zip folder and press `Install plugin`. The icon for the GW
 Open QGIS 3 and go to `Plugins` -> `Manage and Install plugins` -> `Settings` -> `Show also experimental plugins` 
 
 In `All plugins` tab, look for `Geographically Weighted Regression` and tick the checkbox.  
-A new icon for Geographically Weighted Regression will appear on the QGIS main panel and in the Vector Menu.
+A new icon for Geographically Weighted Regression will appear on the QGIS main panel and in the 'Processing Toolbox' panel.
 
 **Note**: In case of errors rising from the Scipy,Spglm,Shapely package, open `OSGeo4W Shell` installed with QGIS3 as `Administrator` and type:
 ```sh
