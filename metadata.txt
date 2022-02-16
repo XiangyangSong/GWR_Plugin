@@ -7,13 +7,13 @@ name=GWR(Processing)
 qgisMinimumVersion=3.0
 description=A QGIS plugin for Geographically Weighted Regression(GWR).
 version=0.1
-author=Song
+author=Song Xiangyang & Gao Jiawei
 email=xiangyang.song@mail.polimi.it
 
 about=A QGIS plugin for Geographically Weighted Regression(GWR).
 
 tracker=http://bugs
-repository=https://github.com/XiangyangSong/GWR_Plugin
+repository=https://github.com/XiangyangSong/gwr_processing
 # End of mandatory metadata
 
 # Recommended items:
@@ -25,11 +25,11 @@ hasProcessingProvider=yes
 # Tags are comma separated with spaces allowed
 tags=python
 
-homepage=https://github.com/XiangyangSong/GWR_Plugin
+homepage=https://github.com/XiangyangSong/gwr_processing
 category=Analysis
 icon=icon.png
 # experimental flag
-experimental=False
+experimental=True
 
 # deprecated flag (applies to the whole plugin, not just a single version)
 deprecated=False
