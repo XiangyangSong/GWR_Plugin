@@ -12,7 +12,7 @@ email=xiangyang.song@mail.polimi.it
 
 about=A QGIS plugin for Geographically Weighted Regression(GWR).
 
-tracker=http://bugs
+tracker=https://github.com/XiangyangSong/gwr_processing/issues
 repository=https://github.com/XiangyangSong/gwr_processing
 # End of mandatory metadata
 
@@ -26,7 +26,7 @@ hasProcessingProvider=yes
 tags=python
 
 homepage=https://github.com/XiangyangSong/gwr_processing
-category=Analysis
+category=Plugin
 icon=icon.png
 # experimental flag
 experimental=True
