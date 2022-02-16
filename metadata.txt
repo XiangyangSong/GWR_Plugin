@@ -18,12 +18,19 @@ repository=https://github.com/XiangyangSong/gwr_processing
 
 # Recommended items:
 
-hasProcessingProvider=yes
+# hasProcessingProvider=yes
 # Uncomment the following line and add your changelog:
-# changelog=
+changelog=
+  Version 0.1.1
+  * Changed the way of importing geographical coordinates from selecting coordinates attributes inside shapefile layer to opening .csv sheet file. 
+  * [bugfix] Fixed the unit problem of fixed and adaptive kernel type. The unit for fixed kernel type is "meters" instead of "kilometers" in our plugin.  
+  * [bugfix] Fixed an issue that the name of spatial kernel in the Geographically Weighted Regression (GWR) remained unchanged in the output summary .txt file.
+  =======
+  Version 0.1 - Initial Version
+  
 
 # Tags are comma separated with spaces allowed
-tags=python
+tags=python,csv,import,export,vector
 
 homepage=https://github.com/XiangyangSong/gwr_processing
 category=Plugin
