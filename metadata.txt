@@ -6,7 +6,7 @@
 name=GWR(Processing)
 qgisMinimumVersion=3.0
 description=A QGIS plugin for Geographically Weighted Regression(GWR).
-version=0.1
+version=0.1.1
 author=Song Xiangyang & Gao Jiawei
 email=xiangyang.song@mail.polimi.it
 
