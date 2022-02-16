@@ -9,7 +9,7 @@ We need use some new functions, but they are not included in mgwr-2.1.2 version.
 ___
 ### Installation - Windows
 
-**1)** Install plugin from github:
+**1)** Install plugin in QGIS:
 
 Download the zip folder of the repository at:
 https://github.com/XiangyangSong/gwr_processing/archive/refs/heads/qgis3gwr1.zip
