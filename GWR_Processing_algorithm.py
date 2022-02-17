@@ -427,7 +427,7 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
                 bw_max = float(parameters['bw_max'])
                 bw_interval = float(parameters['bw_interval'])
                 if bw_min > bw_max:
-                    feedback.pushInfo('Wrong parameter input, bw_min must more than bw_max.')
+                    feedback.pushInfo('Wrong parameters input, bw_max must more than bw_min.')
                     return
             else:
                 feedback.pushInfo('Wrong parameters input, bw_min, bw_max and bw_interval all parameters cannot be empty.')
