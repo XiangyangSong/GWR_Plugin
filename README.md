@@ -49,22 +49,6 @@ $ python -m pip install --upgrade pip
 ___
 ### Installation - Ubuntu
 
-**1)** Install plugin in QGIS:
-
-Download the zip folder of the repository at:
-https://github.com/XiangyangSong/gwr_processing/archive/refs/heads/qgis3gwr1.zip
-
-Open QGIS 3 and go to `Plugins` -> `Install from ZIP`
-
-Select the downloaded zip folder and press `Install plugin`. The icon for the GWR plugin will appear in the list of the installed plugins. Tick the Checkbox to activate it. The plugin will appear in the 'Processing Toolbox' panel.
-
-
-**2)** Install plugin in QGIS:
-
-Open QGIS 3 and go to `Plugins` -> `Manage and Install plugins` -> `Settings` -> `Show also experimental plugins` 
-
-In `All plugins` tab, look for `GWR(Processing)` and tick the checkbox.  
-A new icon for Geographically Weighted Regression will appear on the QGIS main panel and in the 'Processing Toolbox' panel.
 
 
 ___
