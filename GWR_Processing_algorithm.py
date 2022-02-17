@@ -426,10 +426,11 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
                 bw_min = float(parameters['bw_min'])
                 bw_max = float(parameters['bw_max'])
                 bw_interval = float(parameters['bw_interval'])
+                if bw_min > bw_max:
+                    feedback.pushInfo('Wrong parameter input, bw_min must more than bw_max.')
+                    return
             else:
-                feedback.pushInfo('bw_min is Null')
-                feedback.pushInfo('bw_max is Null')
-                feedback.pushInfo('bw_interval is Null')
+                feedback.pushInfo('Wrong parameters input, bw_min, bw_max and bw_interval all parameters cannot be empty.')
                 return 
 
             gwr_selector = Sel_BW(g_coords, g_y, g_X, kernel=kernel_function,fixed=kernel_type)#family=Gaussian()
