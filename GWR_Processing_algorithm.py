@@ -30,7 +30,6 @@ __copyright__ = '(C) 2022 by Song'
 
 __revision__ = '$Format:%H$'
 
-import qgis
 from qgis.PyQt.QtCore import QCoreApplication, QVariant
 from qgis.core import (QgsProcessing,
                        QgsFeatureSink,
@@ -45,13 +44,12 @@ from qgis.core import (QgsProcessing,
                        QgsProcessingParameterVectorLayer,
                        QgsProcessingParameterFileDestination,
                        QgsProcessingMultiStepFeedback,
+                       QgsFields,
                        QgsField,
                        QgsFeature,
-                       QgsProcessingParameterFile)
-                       
-from qgis.core import QgsFields
-from qgis import processing
-
+                       QgsProcessingParameterFile,
+                       QgsWkbTypes)
+                
 from .mgwr.gwr import GWR, MGWR
 from .mgwr.sel_bw import Sel_BW
 import pandas as pd
@@ -98,14 +96,14 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         )
 
         # load location file
-        self.addParameter(
-                    QgsProcessingParameterFile(
-                        name = 'location_csv',
-                        description = 'Open CSV file containing geographical coordinates',
-                        defaultValue=None,
-                        optional = False
-                    )
-                )
+        # self.addParameter(
+        #             QgsProcessingParameterFile(
+        #                 name = 'location_csv',
+        #                 description = 'Open CSV file containing geographical coordinates',
+        #                 defaultValue=None,
+        #                 optional = False
+        #             )
+        #  )
         
         
         # load field location X from source layer
@@ -120,14 +118,16 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         #         optional = False
         #     )
         # )
-        self.addParameter(
-            QgsProcessingParameterString(
-                name = 'location_variable_x',
-                description = 'Input field name of coordinate X in CSV file', 
-                defaultValue='X',
-                optional = False
-            )
-        )
+
+        # load field location X from CSV
+        # self.addParameter(
+        #     QgsProcessingParameterString(
+        #         name = 'location_variable_x',
+        #         description = 'Input field name of coordinate X in CSV file', 
+        #         defaultValue='X',
+        #         optional = False
+        #     )
+        # )
 
         # load field location Y from source layer
         # self.addParameter(
@@ -141,14 +141,16 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         #         defaultValue=''
         #     )
         # )
-        self.addParameter(
-            QgsProcessingParameterString(
-                name = 'location_variable_y',
-                description = 'Input field name of coordinate Y in CSV file',
-                optional = False,
-                defaultValue='Y'
-            )
-        )
+
+        # load field location Y from CSV 
+        # self.addParameter(
+        #     QgsProcessingParameterString(
+        #         name = 'location_variable_y',
+        #         description = 'Input field name of coordinate Y in CSV file',
+        #         optional = False,
+        #         defaultValue='Y'
+        #     )
+        # )
 
 
         # load dependent field from source layer
@@ -380,15 +382,55 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
             layer_attributes.rename(columns={i: fieldnames[i]}, inplace=True)
 
 
-        # 从csv读取
-        input_layer_location_csv = pd.read_csv(parameters['location_csv'])
+        # read x y from csv
+        # input_layer_location_csv = pd.read_csv(parameters['location_csv'])
 
         # location_x = layer_attributes[parameters['location_variable_x']]
         # location_y = layer_attributes[parameters['location_variable_y']]
-        location_x = input_layer_location_csv[parameters['location_variable_x']]
-        location_y = input_layer_location_csv[parameters['location_variable_y']]
+        # location_x = input_layer_location_csv[parameters['location_variable_x']]
+        # location_y = input_layer_location_csv[parameters['location_variable_y']]
+        
+        # 拿到当前选择input layer的geometry类型
+        # geometry type: 0 point, 2 polygon
+        wkbtype = input_featuresource.wkbType()
+        geomtype = QgsWkbTypes.geometryType(wkbtype)
+        
+        # 判断inputlayer的类型 
+        # 如果是point直接读
+        if  geomtype == QgsWkbTypes.PointGeometry:            
+            feedback.pushInfo('当前输入图层是point 为: '+str(geomtype))
+            feedback.pushInfo('当是point类型的时候为: '+str(QgsWkbTypes.PointGeometry))
+            if {'X', 'Y'}.issubset(layer_attributes.columns):
+                feedback.pushInfo('X Y 存在 直接读取')
+                location_x = layer_attributes['X']
+                location_y = layer_attributes['Y']            
+            else:
+                feedback.pushInfo('X Y 不存在 需要计算')
+                features = input_featuresource.getFeatures()
+                for ft in features:
+                    # feedback.pushInfo('ft.geometry().asPoint()[0] x: '+str(ft.geometry().asPoint()[0]))
+                    # feedback.pushInfo('ft.geometry().asPoint()[1] y: '+str(ft.geometry().asPoint()[1]))
+                    location_x.append(ft.geometry().asPoint()[0])
+                    location_y.append(ft.geometry().asPoint()[1])            
+        # 如果是polygon求centroid
+        elif geomtype == QgsWkbTypes.PolygonGeometry:         
+            feedback.pushInfo('当前输入图层是Polygon 为: '+str(geomtype))
+            feedback.pushInfo('当是polygon类型的时候为: '+str(QgsWkbTypes.PolygonGeometry))
+            # 求centroid
+            features = input_featuresource.getFeatures()
+            for ft in features:
+                # feedback.pushInfo('***ft.geometry(): '+str(ft.geometry().centroid().asPoint()))
+                location_x.append(ft.geometry().centroid().asPoint()[0])
+                location_y.append(ft.geometry().centroid().asPoint()[1])                
+        else:
+            feedback.pushInfo('输入图层类型不合法 应为point或polygon')
         
         g_coords = list(zip(location_x, location_y))
+        # feedback.pushInfo('X:  ' + str(location_x))
+        # feedback.pushInfo('Y:  ' + str(location_y))
+        # feedback.pushInfo('g_coords:  ' + str(g_coords))
+        
+        # g_coords = list(zip(location_x, location_y))
         g_y = layer_attributes[parameters['dependent_field']].values.reshape((-1,1))        
         g_X = layer_attributes[parameters['explanatory_field']].values
         
@@ -447,22 +489,23 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         feedback.pushInfo('fixed: ' + str(kernel_type))
         feedback.pushInfo('kernel_function: ' + str(kernel_function))
         feedback.pushInfo('bandwidth_searching: ' + str(bandwidth_searching))
+        feedback.pushInfo('bandwidth_searching_criterion: ' + str(bandwidth_searching_criterion))
         feedback.pushInfo('bandwidth is: ' + str(gwr_bw))
         feedback.pushInfo('dependent field is: ' + str(parameters['dependent_field']))
         #feedback.pushInfo('model_type: ' + str(model_type))
         #feedback.pushInfo('optimization_criterion: ' + str(optimization_criterion))
 
 
-         # ************************************************************************************#
+        # ************************************************************************************#
         # *************************************output to shapefile*********************************#
         # ************************************************************************************#
         #
         # Prepare GWR results for mapping
-        layer_attributes['gwr_intercept'] = gwr_results.params[:,0]
+        layer_attributes['gwr_coefficient_intercept'] = gwr_results.params[:,0]
         for i in range(len(parameters['explanatory_field'])):
-            result_name_explanatory_field = 'gwr_' + parameters['explanatory_field'][i]
+            result_name_explanatory_field = 'gwr_coefficient_#'+ str(i+1)+'_' + parameters['explanatory_field'][i]
             sink_result_name_explanatory_field.append(result_name_explanatory_field)
-            feedback.pushInfo('explanatory field is: ' + str(result_name_explanatory_field))
+            feedback.pushInfo('explanatory field is: ' + str(parameters['explanatory_field'][i]))
             layer_attributes[result_name_explanatory_field] = gwr_results.params[:,i+1]
         
         layer_attributes['geometry'] = layer_attributes_attr_geometry        
@@ -489,9 +532,9 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
             outFields.append(field)
 
         # 2.  Defined the fields: the attributes fields of gwr results
-        outFields.append(QgsField('gwr_intercept', QVariant.Double))
+        outFields.append(QgsField('gwr_coefficient_intercept', QVariant.Double))
         for i in range(len(parameters['explanatory_field'])):
-            outFields.append(QgsField('gwr_' + parameters['explanatory_field'][i], QVariant.Double))
+            outFields.append(QgsField('gwr_coefficient_#'+ str(i+1)+'_' + parameters['explanatory_field'][i], QVariant.Double))
         
         #feedback.pushInfo('Before sink is created' )
         # 3. Create the output sink with the previously defined fields: outfields
@@ -519,7 +562,7 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
                 feat[fieldnames[i]] = feature[fieldnames[i]]                
 
             # Add the result of gwr to the corresponding field column
-            feat['gwr_intercept'] = float(layer_attributes['gwr_intercept'][current])
+            feat['gwr_coefficient_intercept'] = float(layer_attributes['gwr_coefficient_intercept'][current])
             for i in range(len(sink_result_name_explanatory_field)):
                 feat[sink_result_name_explanatory_field[i]] = float(layer_attributes[sink_result_name_explanatory_field[i]][current])
 
