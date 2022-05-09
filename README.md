@@ -9,7 +9,23 @@ We need use some new functions, but they are not included in mgwr-2.1.2 version.
 ___
 ### Installation - Windows
 
-**1)** Install plugin in QGIS:
+**1)** Install dependencies:
+
+Open `OSGeo4W Shell` Shell installed with QGIS as `Administrator` and type:
+```sh
+ $ python -m pip install --upgrade pip
+ $ python -m pip install mgwr -U
+```
+
+**2)** Install plugin in QGIS:
+
+Open `QGIS 3` and go to `Plugins` -> `Manage and Install plugins` -> `Settings` -> `Show also experimental plugins` 
+
+In `All plugins` tab, look for `GWR(Processing)` and tick the checkbox.  
+A new icon for Geographically Weighted Regression will appear on the QGIS main panel and in the 'Processing Toolbox' panel.
+
+
+**3)** Also you can install plugin from `zip folder`:
 
 Download the zip folder of the repository at:
 https://github.com/XiangyangSong/gwr_processing/archive/refs/heads/qgis3gwr1.zip
@@ -19,14 +35,7 @@ Open QGIS 3 and go to `Plugins` -> `Install from ZIP`
 Select the downloaded zip folder and press `Install plugin`. The icon for the GWR plugin will appear in the list of the installed plugins. Tick the Checkbox to activate it. The plugin will appear in the 'Processing Toolbox' panel.
 
 
-**2)** Install plugin in QGIS:
-
-Open QGIS 3 and go to `Plugins` -> `Manage and Install plugins` -> `Settings` -> `Show also experimental plugins` 
-
-In `All plugins` tab, look for `GWR(Processing)` and tick the checkbox.  
-A new icon for Geographically Weighted Regression will appear on the QGIS main panel and in the 'Processing Toolbox' panel.
-
-**Note**: In case of errors rising from the Pandas,Scipy,Spglm,Shapely package, open `OSGeo4W Shell` installed with QGIS3 as `Administrator` and type:
+**Note**: In case of errors rising from the `Pandas`, `Scipy`, `Spglm`, `Shapely` package, open `OSGeo4W Shell` installed with QGIS3 as `Administrator` and type:
 ```sh
  $ python -m pip install pandas -U
  $ python -m pip install scipy -U
