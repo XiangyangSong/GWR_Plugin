@@ -67,7 +67,7 @@ Open `Terminal` and type the commands:
  $ python -m pip3 install mgwr -U
 ```
 
-**2)** Refer to steps `Installation - Windows` --> `2) Install plugin in QGIS` and `3) Also you can install plugin from zip folder`
+**2)** Refer to steps ### Installation - Windows --> `2) Install plugin in QGIS` and `3) Also you can install plugin from zip folder`
 
 ___
 ### Changeset
