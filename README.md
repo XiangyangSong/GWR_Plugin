@@ -63,12 +63,18 @@ ___
 
 Open `Terminal` and type the commands:
 ```sh
- $ python -m pip3 install --upgrade pip
- $ python -m pip3 install mgwr -U
+ $ python3 -m pip install --upgrade pip
+ $ python3 -m pip install mgwr -U
 ```
 
 **2)** Refer to previous steps `Installation - Windows` -> `2) Install plugin in QGIS` and `3) Also you can install plugin from zip folder`
 
+**Note**: In case of errors rising from the `AttributeError: module 'sys' has no attributre 'argv'`, Open `Terminal` and type the commands: 
+```sh
+ $ python3 --version
+ $ pip3 list
+```
+**MAYBE IT IS CAUSED BY LIBPYSAL VERSION**  [click here](https://pysal.org/libpysal/installation.html)
 ___
 ### Changeset
 
