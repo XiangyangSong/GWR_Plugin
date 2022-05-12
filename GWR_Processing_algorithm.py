@@ -48,14 +48,11 @@ from qgis.core import (QgsProcessing,
                        QgsField,
                        QgsFeature,
                        QgsProcessingParameterFile,
-                       QgsWkbTypes,
-                       QgsProcessingUtils)
+                       QgsWkbTypes)
                 
-
+from .mgwr.gwr import GWR, MGWR
+from .mgwr.sel_bw import Sel_BW
 import pandas as pd
-import os
-from mgwr.gwr import GWR, MGWR
-from mgwr.sel_bw import Sel_BW
 
 
 class GWRAlgorithm(QgsProcessingAlgorithm):
@@ -397,8 +394,7 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         # geometry type: 0 point, 2 polygon
         wkbtype = input_featuresource.wkbType()
         geomtype = QgsWkbTypes.geometryType(wkbtype)
-        self.geomtype = geomtype
-
+        
         # 判断inputlayer的类型 
         # 如果是point直接读
         if  geomtype == QgsWkbTypes.PointGeometry:            
@@ -505,7 +501,6 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         # ************************************************************************************#
         #
         # Prepare GWR results for mapping
-        
         layer_attributes['gwr_coefficient_intercept'] = gwr_results.params[:,0]
         for i in range(len(parameters['explanatory_field'])):
             result_name_explanatory_field = 'gwr_coefficient_#'+ str(i+1)+'_' + parameters['explanatory_field'][i]
@@ -513,19 +508,16 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
             feedback.pushInfo('explanatory field is: ' + str(parameters['explanatory_field'][i]))
             layer_attributes[result_name_explanatory_field] = gwr_results.params[:,i+1]
         
-        layer_attributes['geometry'] = layer_attributes_attr_geometry    
-
-        layer_attributes['gwr_localR2'] = gwr_results.localR2
-        layer_attributes['gwr_std_res'] = gwr_results.std_res
-                
+        layer_attributes['geometry'] = layer_attributes_attr_geometry        
+        
         # save as a shp file
         # layer_attributes.to_file(parameters['output_layer'])
         
         # Output gwr results summary to txt file
-        # gwr_results_summary_str = gwr_results.summary(as_str=True)
-        # with open(txt, 'w') as f:
-        #     f.write(gwr_results_summary_str)
-        # f.close()
+        gwr_results_summary_str = gwr_results.summary(as_str=True)
+        with open(txt, 'w') as f:
+            f.write(gwr_results_summary_str)
+        f.close()
 
 
         # ************************************************************************************#
@@ -541,8 +533,6 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
 
         # 2.  Defined the fields: the attributes fields of gwr results
         outFields.append(QgsField('gwr_coefficient_intercept', QVariant.Double))
-        outFields.append(QgsField('gwr_localR2', QVariant.Double))
-        outFields.append(QgsField('gwr_std_res', QVariant.Double))        
         for i in range(len(parameters['explanatory_field'])):
             outFields.append(QgsField('gwr_coefficient_#'+ str(i+1)+'_' + parameters['explanatory_field'][i], QVariant.Double))
         
@@ -572,8 +562,6 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
                 feat[fieldnames[i]] = feature[fieldnames[i]]                
 
             # Add the result of gwr to the corresponding field column
-            feat['gwr_localR2'] = float(layer_attributes['gwr_localR2'][current])
-            feat['gwr_std_res'] = float(layer_attributes['gwr_std_res'][current])
             feat['gwr_coefficient_intercept'] = float(layer_attributes['gwr_coefficient_intercept'][current])
             for i in range(len(sink_result_name_explanatory_field)):
                 feat[sink_result_name_explanatory_field[i]] = float(layer_attributes[sink_result_name_explanatory_field[i]][current])
@@ -589,25 +577,7 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
 
             feedback.setProgress(int(current * total))
 
-        # to get hold of the layer in post processing:
-        self.dest_id=dest_id
-
         return results
-
-    #Changes suggested by Fran Raga:   
-    def postProcessAlgorithm(self, context, feedback):
-        retval = super().postProcessAlgorithm(context, feedback)
-        output = QgsProcessingUtils.mapLayerFromString(self.dest_id, context)
-        if  self.geomtype == QgsWkbTypes.PointGeometry: 
-            path = os.path.join(os.path.dirname(__file__), 'layer_style', 'mgwr_point.qml')
-        elif self.geomtype == QgsWkbTypes.PolygonGeometry:
-            path = os.path.join(os.path.dirname(__file__), 'layer_style', 'mgwr_poly.qml')
-
-        # feedback.pushInfo('path is********************' + str(path))
-        output.loadNamedStyle(path)
-        output.triggerRepaint()
-
-        return {self.SINK_LAYER: self.dest_id}
 
     def name(self):
         """
