@@ -1,6 +1,6 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
 <qgis version="3.16.14-Hannover" styleCategories="Symbology|Legend">
-  <renderer-v2 forceraster="0" enableorderby="0" type="graduatedSymbol" graduatedMethod="GraduatedColor" symbollevels="0" attr="gwr_std_res">
+  <renderer-v2 forceraster="0" enableorderby="0" type="graduatedSymbol" graduatedMethod="GraduatedColor" symbollevels="0" attr="std_res">
     <ranges>
       <range upper="-2.500000000000000" label="&lt;-2.5 Std.Dev" symbol="0" render="true" lower="-1000.000000000000000"/>
       <range upper="-1.500000000000000" label="-2.5 - -1.5 Std.Dev" symbol="1" render="true" lower="-2.500000000000000"/>
