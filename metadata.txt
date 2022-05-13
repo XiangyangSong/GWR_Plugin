@@ -22,6 +22,7 @@ repository=https://github.com/XiangyangSong/GWR_Plugin
 # Uncomment the following line and add your changelog:
 changelog=
   Version 0.1.1
+  * Automatically get the geometry type of the currently selected input layer, and calculate the centroid coordinates. 
   * Updated ShortHelpString.html document to provide more information on help page in the plugin, with an improved layout.
   * Changed the way of importing geographical coordinates from selecting coordinates attributes inside shapefile layer to opening .csv sheet file. 
   * [bugfix] Fixed the unit problem of fixed and adaptive kernel type. The unit for fixed kernel type is "meters" instead of "kilometers" in our plugin.
@@ -47,7 +48,7 @@ deprecated=False
 # plugin_dependencies=
 
 Category of the plugin: Raster, Vector, Database or Web
-# category=
+# category=Vector
 
 # If the plugin can run on QGIS Server.
 server=False
