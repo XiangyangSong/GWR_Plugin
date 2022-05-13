@@ -518,8 +518,8 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         
         layer_attributes['geometry'] = layer_attributes_attr_geometry    
 
-        layer_attributes['gwr_localR2'] = gwr_results.localR2
-        layer_attributes['gwr_std_res'] = gwr_results.std_res
+        layer_attributes['localR2'] = gwr_results.localR2
+        layer_attributes['std_res'] = gwr_results.std_res
                 
         # save as a shp file
         # layer_attributes.to_file(parameters['output_layer'])
@@ -544,8 +544,8 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
 
         # 2.  Defined the fields: the attributes fields of gwr results
         outFields.append(QgsField('gwr_coefficient_intercept', QVariant.Double))
-        outFields.append(QgsField('gwr_localR2', QVariant.Double))
-        outFields.append(QgsField('gwr_std_res', QVariant.Double))        
+        outFields.append(QgsField('localR2', QVariant.Double))
+        outFields.append(QgsField('std_res', QVariant.Double))        
         for i in range(len(parameters['explanatory_field'])):
             outFields.append(QgsField('gwr_coefficient_#'+ str(i+1)+'_' + parameters['explanatory_field'][i], QVariant.Double))
         
@@ -575,8 +575,8 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
                 feat[fieldnames[i]] = feature[fieldnames[i]]                
 
             # Add the result of gwr to the corresponding field column
-            feat['gwr_localR2'] = float(layer_attributes['gwr_localR2'][current])
-            feat['gwr_std_res'] = float(layer_attributes['gwr_std_res'][current])
+            feat['localR2'] = float(layer_attributes['localR2'][current])
+            feat['std_res'] = float(layer_attributes['std_res'][current])
             feat['gwr_coefficient_intercept'] = float(layer_attributes['gwr_coefficient_intercept'][current])
             for i in range(len(sink_result_name_explanatory_field)):
                 feat[sink_result_name_explanatory_field[i]] = float(layer_attributes[sink_result_name_explanatory_field[i]][current])
