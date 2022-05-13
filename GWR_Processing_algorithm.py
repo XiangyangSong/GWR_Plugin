@@ -393,41 +393,41 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         # location_x = input_layer_location_csv[parameters['location_variable_x']]
         # location_y = input_layer_location_csv[parameters['location_variable_y']]
         
-        # 拿到当前选择input layer的geometry类型
+        # Get the geometry type of the currently selected input layer
         # geometry type: 0 point, 2 polygon
         wkbtype = input_featuresource.wkbType()
         geomtype = QgsWkbTypes.geometryType(wkbtype)
         self.geomtype = geomtype
 
-        # 判断inputlayer的类型 
-        # 如果是point直接读
+        # judge the type of inputlayer
+        # If it is point type, read it directly
         if  geomtype == QgsWkbTypes.PointGeometry:            
-            feedback.pushInfo('当前输入图层是point 为: '+str(geomtype))
-            feedback.pushInfo('当是point类型的时候为: '+str(QgsWkbTypes.PointGeometry))
+            feedback.pushInfo('The current input layer is point that is: '+str(geomtype))
+            feedback.pushInfo('When it is a point type, it is: '+str(QgsWkbTypes.PointGeometry))
             if {'X', 'Y'}.issubset(layer_attributes.columns):
-                feedback.pushInfo('X Y 存在 直接读取')
+                feedback.pushInfo('X Y exist, directly read')
                 location_x = layer_attributes['X']
                 location_y = layer_attributes['Y']            
             else:
-                feedback.pushInfo('X Y 不存在 需要计算')
+                feedback.pushInfo('X Y not exist, need to calculate')
                 features = input_featuresource.getFeatures()
                 for ft in features:
                     # feedback.pushInfo('ft.geometry().asPoint()[0] x: '+str(ft.geometry().asPoint()[0]))
                     # feedback.pushInfo('ft.geometry().asPoint()[1] y: '+str(ft.geometry().asPoint()[1]))
                     location_x.append(ft.geometry().asPoint()[0])
                     location_y.append(ft.geometry().asPoint()[1])            
-        # 如果是polygon求centroid
+        # If it is a Polygon, calculate the centroid
         elif geomtype == QgsWkbTypes.PolygonGeometry:         
-            feedback.pushInfo('当前输入图层是Polygon 为: '+str(geomtype))
-            feedback.pushInfo('当是polygon类型的时候为: '+str(QgsWkbTypes.PolygonGeometry))
-            # 求centroid
+            feedback.pushInfo('The current input layer is Polygon that is: '+str(geomtype))
+            feedback.pushInfo('When it is a polygon type, it is: '+str(QgsWkbTypes.PolygonGeometry))
+            # calculate centroid
             features = input_featuresource.getFeatures()
             for ft in features:
                 # feedback.pushInfo('***ft.geometry(): '+str(ft.geometry().centroid().asPoint()))
                 location_x.append(ft.geometry().centroid().asPoint()[0])
                 location_y.append(ft.geometry().centroid().asPoint()[1])                
         else:
-            feedback.pushInfo('输入图层类型不合法 应为point或polygon')
+            feedback.pushInfo('The input layer type is invalid. It should be Point or Polygon')
         
         g_coords = list(zip(location_x, location_y))
         # feedback.pushInfo('X:  ' + str(location_x))
@@ -593,8 +593,7 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         self.dest_id=dest_id
 
         return results
-
-    #Changes suggested by Fran Raga:   
+  
     def postProcessAlgorithm(self, context, feedback):
         retval = super().postProcessAlgorithm(context, feedback)
         output = QgsProcessingUtils.mapLayerFromString(self.dest_id, context)
