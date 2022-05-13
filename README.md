@@ -78,7 +78,13 @@ Open `Terminal` and type the commands:
 ___
 ### Changeset
 
-##### Changeset 01/2022
+##### Changeset 04/2022
+- Add new features. Add styles to the output layer.
+
+##### Changeset 03/2022
+- Improve the code. Automatically get the geometry type of the currently selected input layer, and calculate the centroid coordinates
+
+##### Changeset 02/2022
 - Fixed an issue of export feature type error. 
 
 ##### Changeset 02/2022
