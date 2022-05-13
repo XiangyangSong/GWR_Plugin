@@ -598,12 +598,12 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         retval = super().postProcessAlgorithm(context, feedback)
         output = QgsProcessingUtils.mapLayerFromString(self.dest_id, context)
         if  self.geomtype == QgsWkbTypes.PointGeometry: 
-            path = os.path.join(os.path.dirname(__file__), 'layer_style', 'mgwr_point.qml')
+            style_path = os.path.join(os.path.dirname(__file__), 'layer_style', 'mgwr_point.qml')
         elif self.geomtype == QgsWkbTypes.PolygonGeometry:
-            path = os.path.join(os.path.dirname(__file__), 'layer_style', 'mgwr_poly.qml')
+            style_path = os.path.join(os.path.dirname(__file__), 'layer_style', 'mgwr_poly.qml')
 
         # feedback.pushInfo('path is********************' + str(path))
-        output.loadNamedStyle(path)
+        output.loadNamedStyle(style_path)
         output.triggerRepaint()
 
         return {self.SINK_LAYER: self.dest_id}
