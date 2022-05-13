@@ -406,6 +406,7 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
             feedback.pushInfo('When it is a point type, it is: '+str(QgsWkbTypes.PointGeometry))
             if {'X', 'Y'}.issubset(layer_attributes.columns):
                 feedback.pushInfo('X Y exist, directly read')
+                feedback.pushInfo('processing...wait a second')                
                 location_x = layer_attributes['X']
                 location_y = layer_attributes['Y']            
             else:
@@ -601,6 +602,8 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
             style_path = os.path.join(os.path.dirname(__file__), 'layer_style', 'mgwr_point.qml')
         elif self.geomtype == QgsWkbTypes.PolygonGeometry:
             style_path = os.path.join(os.path.dirname(__file__), 'layer_style', 'mgwr_poly.qml')
+        else:
+            pass
 
         # feedback.pushInfo('path is********************' + str(path))
         output.loadNamedStyle(style_path)
