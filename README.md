@@ -74,7 +74,10 @@ Open `Terminal` and type the commands:
  $ python3 --version
  $ pip3 list
 ```
-**MAYBE IT IS CAUSED BY LIBPYSAL VERSION**  [click here](https://pysal.org/libpysal/installation.html)
+
+Then check your python environment. Maybe the environment in which your QGIS is running is not a standard python environment, some issues caused by the following:
+
+- **MAYBE IT IS CAUSED BY LIBPYSAL VERSION**  [click here](https://pysal.org/libpysal/installation.html)
 ___
 ### Changeset
 
