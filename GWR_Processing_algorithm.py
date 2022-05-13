@@ -312,6 +312,8 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
             QgsProcessingParameterFeatureSink(
                 self.SINK_LAYER, 
                 description = 'Output',
+                type = QgsProcessing.TypeVectorAnyGeometry,
+                defaultValue = None,
                 optional = True
             )
         )
