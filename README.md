@@ -5,7 +5,7 @@ A QGIS plugin for Geographically Weighted Regression(GWR).
 
 The Plugin implements Geographically Weighted Regression(GWR) statistics to perform spacial analysis. Users can choose some parameters and perform action. And the results will display with style. The plugin requires MGWR (see the repository for installation instruction).
 
-*Note: We need use some new functions, they are not included in mgwr-2.1.2 version, but in unrelease version. So the export summary function is unavailable now. If these functions are available, I will update this plugin in time. *
+**Note**: We need use some new functions, they are not included in mgwr-2.1.2 version, but in unrelease version. So the export summary function is unavailable now. If these functions are available, I will update this plugin in time. 
 ___
 ### Installation - Windows
 
