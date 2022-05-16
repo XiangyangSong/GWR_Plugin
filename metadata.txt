@@ -10,7 +10,7 @@ version=0.1.1
 author=Song Xiangyang & Gao Jiawei
 email=xiangyang.song@mail.polimi.it
 
-about=A QGIS plugin for Geographically Weighted Regression(GWR).
+about=A QGIS plugin for Geographically Weighted Regression(GWR). The Plugin implements Geographically Weighted Regression(GWR) statistics to perform spacial analysis. Users can choose some parameters and perform action. And the results will display with style. The plugin requires MGWR (see the repository for installation instruction).
 
 tracker=https://github.com/XiangyangSong/GWR_Plugin/issues
 repository=https://github.com/XiangyangSong/GWR_Plugin
@@ -31,7 +31,7 @@ changelog=
   
 
 # Tags are comma separated with spaces allowed
-tags=python,csv,import,export,vector
+tags=python,import,export,vector
 
 homepage=https://github.com/XiangyangSong/GWR_Plugin
 category=Plugin
@@ -45,7 +45,7 @@ deprecated=False
 # Since QGIS 3.8, a comma separated list of plugins to be installed
 # (or upgraded) can be specified.
 # Check the documentation for more information.
-# plugin_dependencies=
+plugin_dependencies=mgwr-2.1.2
 
 Category of the plugin: Raster, Vector, Database or Web
 # category=Vector
