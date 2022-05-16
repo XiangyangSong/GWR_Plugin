@@ -81,6 +81,10 @@ Then check your python environment. Maybe the environment in which your QGIS is 
 ___
 ### Changeset
 
+##### Changeset 05/2022
+- Publish the new version v0.1.2
+- Fix some issues and update the metadata file.
+
 ##### Changeset 04/2022
 - Add new features. Add styles to the output layer.
 
@@ -90,7 +94,7 @@ ___
 ##### Changeset 02/2022
 - Fixed an issue of export feature type error. 
 
-##### Changeset 02/2022
+##### Changeset 01/2022
 - Fixed an issue that the name of spatial kernel in the Geographically Weighted Regression (GWR) remained unchanged in the output summary .txt file. 
 - Changed the way of importing geographical coordinates from selecting coordinates attributes inside shapefile layer to opening .csv sheet file. As a result, user is required to proceed one additional step after opening the .csv file: mannually type the names of two fields indicating coordinates x and y in the .csv file opened. 
 - Fixed the unit problem of fixed and adaptive kernel type. The unit for fixed kernel type is "meters" instead of kilometers in our plugin. 
