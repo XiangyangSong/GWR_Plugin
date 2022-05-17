@@ -31,7 +31,6 @@ changelog=
   =======
   Version 0.1 - Initial Version
   
-
 # Tags are comma separated with spaces allowed
 tags=python,import,export,vector
 
@@ -44,8 +43,7 @@ experimental=True
 # deprecated flag (applies to the whole plugin, not just a single version)
 deprecated=False
 
-# Since QGIS 3.8, a comma separated list of plugins to be installed
-# (or upgraded) can be specified.
+# Since QGIS 3.8, a comma separated list of plugins to be installed (or upgraded) can be specified.
 # Check the documentation for more information.
 # plugin_dependencies=mgwr-2.1.2,pandas
 
