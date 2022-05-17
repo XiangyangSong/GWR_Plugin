@@ -47,10 +47,10 @@ deprecated=False
 # Since QGIS 3.8, a comma separated list of plugins to be installed
 # (or upgraded) can be specified.
 # Check the documentation for more information.
-plugin_dependencies=mgwr-2.1.2,pandas
+# plugin_dependencies=mgwr-2.1.2,pandas
 
 Category of the plugin: Raster, Vector, Database or Web
-# category=Spatial
+# category=Vector
 
 # If the plugin can run on QGIS Server.
 server=False
