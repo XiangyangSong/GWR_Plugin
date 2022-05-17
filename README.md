@@ -25,7 +25,7 @@ In `All plugins` tab, look for `GWR(Processing)` and tick the checkbox.
 
 A new icon for Geographically Weighted Regression will appear on the QGIS main panel and in the 'Processing Toolbox' panel.
 
-**If you are using 3.20 or a later version QGIS, we recommend that you install plugin from `zip folder` when you have an unknown error**
+**If you are using 3.20 or a later version QGIS, we recommend that you install plugin from `zip folder` when you have an unknown error.**
 
 
 **3)** Also you can install plugin from `zip folder`:
