@@ -423,8 +423,8 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
                     location_y.append(ft.geometry().asPoint()[1])            
         # If it is a Polygon, calculate the centroid
         elif geomtype == QgsWkbTypes.PolygonGeometry:         
-            feedback.pushInfo('The current input layer is Polygon that is: '+str(geomtype))
-            feedback.pushInfo('When it is a polygon type, it is: '+str(QgsWkbTypes.PolygonGeometry))
+            # feedback.pushInfo('The current input layer is Polygon that is: '+str(geomtype))
+            # feedback.pushInfo('When it is a polygon type, it is: '+str(QgsWkbTypes.PolygonGeometry))
             # calculate centroid
             features = input_featuresource.getFeatures()
             for ft in features:
