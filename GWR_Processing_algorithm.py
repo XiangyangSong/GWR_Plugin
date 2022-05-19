@@ -511,7 +511,7 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         #
         # Prepare GWR results for mapping
         
-        layer_attributes['gwr_coefficient_intercept'] = gwr_results.params[:,0]
+        layer_attributes['gwr_param_intercept'] = gwr_results.params[:,0]
         for i in range(len(parameters['explanatory_field'])):
             result_name_explanatory_field = 'gwr_coefficient_#'+ str(i+1)+'_' + parameters['explanatory_field'][i]
             sink_result_name_explanatory_field.append(result_name_explanatory_field)
@@ -593,7 +593,7 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
             outFields.append(field)
 
         # 2.  Defined the fields: the attributes fields of gwr results
-        outFields.append(QgsField('gwr_coefficient_intercept', QVariant.Double))
+        outFields.append(QgsField('gwr_param_intercept', QVariant.Double))
         outFields.append(QgsField('localR2', QVariant.Double))
         outFields.append(QgsField('std_res', QVariant.Double))        
         for i in range(len(parameters['explanatory_field'])):
@@ -627,7 +627,7 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
             # Add the result of gwr to the corresponding field column
             feat['localR2'] = float(layer_attributes['localR2'][current])
             feat['std_res'] = float(layer_attributes['std_res'][current])
-            feat['gwr_coefficient_intercept'] = float(layer_attributes['gwr_coefficient_intercept'][current])
+            feat['gwr_param_intercept'] = float(layer_attributes['gwr_param_intercept'][current])
             for i in range(len(sink_result_name_explanatory_field)):
                 feat[sink_result_name_explanatory_field[i]] = float(layer_attributes[sink_result_name_explanatory_field[i]][current])
 
