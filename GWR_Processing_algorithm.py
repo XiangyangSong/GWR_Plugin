@@ -520,8 +520,8 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         
         layer_attributes['geometry'] = layer_attributes_attr_geometry    
 
-        layer_attributes['localR2'] = gwr_results.localR2
-        layer_attributes['std_res'] = gwr_results.std_res
+        layer_attributes['#localR2'] = gwr_results.localR2
+        layer_attributes['#std_res'] = gwr_results.std_res
                 
         # save as a shp file
         # gwr_results_summary_str = gwr_results.summary(as_str=True)
@@ -594,8 +594,8 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
 
         # 2.  Defined the fields: the attributes fields of gwr results
         outFields.append(QgsField('#intercept', QVariant.Double))
-        outFields.append(QgsField('localR2', QVariant.Double))
-        outFields.append(QgsField('std_res', QVariant.Double))        
+        outFields.append(QgsField('#localR2', QVariant.Double))
+        outFields.append(QgsField('#std_res', QVariant.Double))        
         for i in range(len(parameters['explanatory_field'])):
             outFields.append(QgsField('#'+ parameters['explanatory_field'][i], QVariant.Double))
         
@@ -625,8 +625,8 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
                 feat[fieldnames[i]] = feature[fieldnames[i]]                
 
             # Add the result of gwr to the corresponding field column
-            feat['localR2'] = float(layer_attributes['localR2'][current])
-            feat['std_res'] = float(layer_attributes['std_res'][current])
+            feat['#localR2'] = float(layer_attributes['#localR2'][current])
+            feat['#std_res'] = float(layer_attributes['#std_res'][current])
             feat['#intercept'] = float(layer_attributes['#intercept'][current])
             for i in range(len(sink_result_name_explanatory_field)):
                 feat[sink_result_name_explanatory_field[i]] = float(layer_attributes[sink_result_name_explanatory_field[i]][current])
