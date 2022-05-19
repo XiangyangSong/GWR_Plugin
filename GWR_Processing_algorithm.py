@@ -513,7 +513,7 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         
         layer_attributes['gwr_coefficient_intercept'] = gwr_results.params[:,0]
         for i in range(len(parameters['explanatory_field'])):
-            result_name_explanatory_field = 'gwr_param#'+ str(i+1)+'_' + parameters['explanatory_field'][i]
+            result_name_explanatory_field = 'gwr_coefficient_#'+ str(i+1)+'_' + parameters['explanatory_field'][i]
             sink_result_name_explanatory_field.append(result_name_explanatory_field)
             feedback.pushInfo('explanatory field is: ' + str(parameters['explanatory_field'][i]))
             layer_attributes[result_name_explanatory_field] = gwr_results.params[:,i+1]
