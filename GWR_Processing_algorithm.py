@@ -523,15 +523,19 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         layer_attributes['std_res'] = gwr_results.std_res
                 
         # save as a shp file
-        # layer_attributes.to_file(parameters['output_layer'])
-        
-        # Output gwr results summary to txt file
-        #gwr_results_summary_str = gwr_results.summary(as_str=True)
-        summary = '=' * 55 + '\n'
+        # gwr_results_summary_str = gwr_results.summary(as_str=True)
+
+        summary = '=' * 50 + '\n'
         summary += "%-54s %20s\n" % ('Model type', gwr_results.family.__class__.__name__)
         summary += "%-60s %14d\n" % ('Number of observations:', gwr_results.n)
         summary += "%-60s %14d\n\n" % ('Number of covariates:', gwr_results.k)
+
+        # Global Regression Results
+        # summary = "%s\n" % ('Global Regression Results')
+        # summary += '-' * 75 + '\n'
+
         # Geographically Weighted Regression (GWR) Results
+        XNames = ["X" + str(i) for i in range(gwr_results.k)]
         summary += "%s\n" % ('Geographically Weighted Regression (GWR) Results')
         summary += '-' * 75 + '\n'
         if kernel_type == True:
@@ -556,6 +560,20 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         summary += "%-62s %12.3f\n" % ('Adjusted R2:', gwr_results.adj_R2)
         summary += "%-62s %12.3f\n" % ('Adj. alpha (95%):', gwr_results.adj_alpha[1])
         summary += "%-62s %12.3f\n" % ('Adj. critical t value (95%):', gwr_results.critical_tval(gwr_results.adj_alpha[1]))
+        
+        # Summary Statistics For GWR Parameter Estimates
+        summary += "\n%s\n" % ('Summary Statistics For GWR Parameter Estimates')
+        summary += '-' * 75 + '\n'
+        summary += "%-20s %10s %10s %10s %10s %10s\n" % ('Variable', 'Mean', 'STD', 'Min', 'Median', 'Max')
+        summary += "%-20s %10s %10s %10s %10s %10s\n" % ( '-' * 20, '-' * 10, '-' * 10, '-' * 10, '-' * 10, '-' * 10)
+        for i in range(gwr_results.k):
+            summary += "%-20s %10.3f %10.3f %10.3f %10.3f %10.3f\n" % (
+                XNames[i], np.mean(gwr_results.params[:, i]), np.std(gwr_results.params[:, i]),
+                np.min(gwr_results.params[:, i]), np.median(gwr_results.params[:, i]),
+                np.max(gwr_results.params[:, i]))
+
+        summary += '=' * 50 + '\n'
+
         with open(txt, 'w') as f:
             # f.write(gwr_results_summary_str)
             f.write(summary)
