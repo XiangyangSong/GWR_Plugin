@@ -53,6 +53,7 @@ from qgis.core import (QgsProcessing,
                 
 
 import pandas as pd
+import numpy as np
 import os
 from mgwr.gwr import GWR, MGWR
 from mgwr.sel_bw import Sel_BW
@@ -525,10 +526,40 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         # layer_attributes.to_file(parameters['output_layer'])
         
         # Output gwr results summary to txt file
-        # gwr_results_summary_str = gwr_results.summary(as_str=True)
-        # with open(txt, 'w') as f:
-        #     f.write(gwr_results_summary_str)
-        # f.close()
+        #gwr_results_summary_str = gwr_results.summary(as_str=True)
+        summary = '=' * 55 + '\n'
+        summary += "%-54s %20s\n" % ('Model type', gwr_results.family.__class__.__name__)
+        summary += "%-60s %14d\n" % ('Number of observations:', gwr_results.n)
+        summary += "%-60s %14d\n\n" % ('Number of covariates:', gwr_results.k)
+        # Geographically Weighted Regression (GWR) Results
+        summary += "%s\n" % ('Geographically Weighted Regression (GWR) Results')
+        summary += '-' * 75 + '\n'
+        if kernel_type == True:
+            summary += "%-50s %20s\n" % ('Spatial kernel:', 'Fixed ' + kernel_function)
+        else: 
+            summary += "%-54s %20s\n" % ('Spatial kernel:', 'Adaptive ' + kernel_function)
+
+        summary += "%-62s %12.3f\n" % ('Bandwidth used:', gwr_bw)
+
+        # Diagnostic information
+        summary += "\n%s\n" % ('Diagnostic information')
+        summary += '-' * 75 + '\n'
+        summary += "%-62s %12.3f\n" % ('Residual sum of squares:', gwr_results.resid_ss)
+        summary += "%-62s %12.3f\n" % ( 'Effective number of parameters (trace(S)):', gwr_results.tr_S)
+        summary += "%-62s %12.3f\n" % ('Degree of freedom (n - trace(S)):', gwr_results.df_model)
+        summary += "%-62s %12.3f\n" % ('Sigma estimate:', np.sqrt(gwr_results.sigma2))
+        summary += "%-62s %12.3f\n" % ('Log-likelihood:', gwr_results.llf)
+        summary += "%-62s %12.3f\n" % ('AIC:', gwr_results.aic)
+        summary += "%-62s %12.3f\n" % ('AICc:', gwr_results.aicc)
+        summary += "%-62s %12.3f\n" % ('BIC:', gwr_results.bic)
+        summary += "%-62s %12.3f\n" % ('R2:', gwr_results.R2)
+        summary += "%-62s %12.3f\n" % ('Adjusted R2:', gwr_results.adj_R2)
+        summary += "%-62s %12.3f\n" % ('Adj. alpha (95%):', gwr_results.adj_alpha[1])
+        summary += "%-62s %12.3f\n" % ('Adj. critical t value (95%):', gwr_results.critical_tval(gwr_results.adj_alpha[1]))
+        with open(txt, 'w') as f:
+            # f.write(gwr_results_summary_str)
+            f.write(summary)
+        f.close()
 
 
         # ************************************************************************************#
