@@ -22,7 +22,8 @@ repository=https://github.com/XiangyangSong/GWR_Plugin
 # Uncomment the following line and add your changelog:
 changelog=
   Version 0.1.2
-  *Fixed some issues and updated the metadata file.
+  * Updated the output of summary file.
+  * Fixed some issues and updated the metadata file.
   Version 0.1.1
   * Automatically get the geometry type of the currently selected input layer, and calculate the centroid coordinates. 
   * Updated ShortHelpString.html document to provide more information on help page in the plugin, with an improved layout.
