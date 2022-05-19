@@ -511,9 +511,9 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         #
         # Prepare GWR results for mapping
         
-        layer_attributes['intercept'] = gwr_results.params[:,0]
+        layer_attributes['#intercept'] = gwr_results.params[:,0]
         for i in range(len(parameters['explanatory_field'])):
-            result_name_explanatory_field = '#'+ str(i+1)+'_' + parameters['explanatory_field'][i]
+            result_name_explanatory_field = '#'+ parameters['explanatory_field'][i]
             sink_result_name_explanatory_field.append(result_name_explanatory_field)
             feedback.pushInfo('explanatory field is: ' + str(parameters['explanatory_field'][i]))
             layer_attributes[result_name_explanatory_field] = gwr_results.params[:,i+1]
@@ -597,7 +597,7 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         outFields.append(QgsField('localR2', QVariant.Double))
         outFields.append(QgsField('std_res', QVariant.Double))        
         for i in range(len(parameters['explanatory_field'])):
-            outFields.append(QgsField('#'+ str(i+1)+'_' + parameters['explanatory_field'][i], QVariant.Double))
+            outFields.append(QgsField('#'+ parameters['explanatory_field'][i], QVariant.Double))
         
         #feedback.pushInfo('Before sink is created' )
         # 3. Create the output sink with the previously defined fields: outfields
