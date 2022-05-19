@@ -405,15 +405,16 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         # judge the type of inputlayer
         # If it is point type, read it directly
         if  geomtype == QgsWkbTypes.PointGeometry:            
-            feedback.pushInfo('The current input layer is point that is: '+str(geomtype))
-            feedback.pushInfo('When it is a point type, it is: '+str(QgsWkbTypes.PointGeometry))
+            # feedback.pushInfo('The current input layer is point that is: '+str(geomtype))
+            # feedback.pushInfo('When it is a point type, it is: '+str(QgsWkbTypes.PointGeometry))
             if {'X', 'Y'}.issubset(layer_attributes.columns):
                 feedback.pushInfo('X Y exist, directly read')
-                feedback.pushInfo('processing...wait a second')                
+                feedback.pushInfo('processing...wait a second...')                
                 location_x = layer_attributes['X']
                 location_y = layer_attributes['Y']            
             else:
                 feedback.pushInfo('X Y not exist, need to calculate')
+                feedback.pushInfo('processing...wait a second...')
                 features = input_featuresource.getFeatures()
                 for ft in features:
                     # feedback.pushInfo('ft.geometry().asPoint()[0] x: '+str(ft.geometry().asPoint()[0]))
@@ -510,9 +511,9 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
         #
         # Prepare GWR results for mapping
         
-        layer_attributes['gwr_coefficient_intercept'] = gwr_results.params[:,0]
+        layer_attributes['gwr_#intercept'] = gwr_results.params[:,0]
         for i in range(len(parameters['explanatory_field'])):
-            result_name_explanatory_field = 'gwr_coefficient_#'+ str(i+1)+'_' + parameters['explanatory_field'][i]
+            result_name_explanatory_field = 'gwr_#'+ str(i+1)+'_' + parameters['explanatory_field'][i]
             sink_result_name_explanatory_field.append(result_name_explanatory_field)
             feedback.pushInfo('explanatory field is: ' + str(parameters['explanatory_field'][i]))
             layer_attributes[result_name_explanatory_field] = gwr_results.params[:,i+1]
