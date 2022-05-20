@@ -99,7 +99,7 @@ ___
 
 ___
 **Future work**
-- Add some guidance information.
+- Add some guidance information about using plugin on Mac OS platform.
 - Improve GUI appereance.
 - Implement Multiscale Geographically Weighted Regression(MGWR).
 
