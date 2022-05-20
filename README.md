@@ -4,8 +4,6 @@ A QGIS plugin for Geographically Weighted Regression(GWR).
 **THIS PLUGIN VERSION IS BASED ON MGWR: LATEST RELEASED VERSION >= 2.1.2**  [other versions here](https://github.com/pysal/mgwr/)
 
 The Plugin implements Geographically Weighted Regression(GWR) statistics to perform spacial analysis. Users can choose some parameters and perform action. And the results will display with style. The plugin requires MGWR (see the repository for installation instruction).
-
-**Note**: We need use some new functions, they are not included in mgwr-2.1.2 version, but in unrelease version. So the export summary function is unavailable now. If these functions are available, I will update this plugin in time. 
 ___
 ### Installation - Windows
 
@@ -98,6 +96,12 @@ ___
 - Changed the way of importing geographical coordinates from selecting coordinates attributes inside shapefile layer to opening .csv sheet file. As a result, user is required to proceed one additional step after opening the .csv file: mannually type the names of two fields indicating coordinates x and y in the .csv file opened. 
 - Fixed the unit problem of fixed and adaptive kernel type. The unit for fixed kernel type is "meters" instead of kilometers in our plugin. 
 - Updated ShortHelpString.html document to provide more information on help page in the plugin, with an improved layout.
+
+___
+**Future work**
+- Add some guidance information.
+- Improve GUI appereance.
+- Implement Multiscale Geographically Weighted Regression(MGWR).
 
 ___
 **Reference Article**
