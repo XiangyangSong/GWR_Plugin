@@ -420,7 +420,9 @@ class GWRAlgorithm(QgsProcessingAlgorithm):
                     # feedback.pushInfo('ft.geometry().asPoint()[0] x: '+str(ft.geometry().asPoint()[0]))
                     # feedback.pushInfo('ft.geometry().asPoint()[1] y: '+str(ft.geometry().asPoint()[1]))
                     location_x.append(ft.geometry().asPoint()[0])
-                    location_y.append(ft.geometry().asPoint()[1])            
+                    location_y.append(ft.geometry().asPoint()[1]) 
+                location_x = pd.Series(location_x)
+                location_y = pd.Series(location_y)       
         # If it is a Polygon, calculate the centroid
         elif geomtype == QgsWkbTypes.PolygonGeometry:         
             # feedback.pushInfo('The current input layer is Polygon that is: '+str(geomtype))

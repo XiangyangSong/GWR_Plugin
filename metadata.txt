@@ -10,7 +10,7 @@ version=0.1.2
 author=Song Xiangyang & Gao Jiawei
 email=xiangyang.song@mail.polimi.it
 
-about=A QGIS plugin for Geographically Weighted Regression(GWR). The Plugin implements Geographically Weighted Regression(GWR) statistics to perform spacial analysis. Users can choose some parameters and perform action. And the results will display with style. The plugin requires MGWR (see the repository for installation instruction).
+about=A QGIS plugin for Geographically Weighted Regression(GWR). The Plugin implements Gaussian Geographically Weighted Regression(GWR) to perform spatial analysis. Users can choose some parameters and perform action. And the results will display with style. The plugin requires MGWR (see the repository for installation instruction).
 
 tracker=https://github.com/XiangyangSong/GWR_Plugin/issues
 repository=https://github.com/XiangyangSong/GWR_Plugin
@@ -22,8 +22,9 @@ repository=https://github.com/XiangyangSong/GWR_Plugin
 # Uncomment the following line and add your changelog:
 changelog=
   Version 0.1.2
+  * [bugfix] Fixed matrix computing problem when extracting point coordinates from Point geometry.
   * Updated the output of summary file.
-  * Fixed some issues and updated the metadata file.
+  * Fixed some known issues and updated the metadata file.
   Version 0.1.1
   * Automatically get the geometry type of the currently selected input layer, and calculate the centroid coordinates. 
   * Updated ShortHelpString.html document to provide more information on help page in the plugin, with an improved layout.

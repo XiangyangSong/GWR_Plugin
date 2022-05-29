@@ -3,7 +3,7 @@ A QGIS plugin for Geographically Weighted Regression(GWR).
 
 **THIS PLUGIN VERSION IS BASED ON MGWR: LATEST RELEASED VERSION >= 2.1.2**  [other versions here](https://github.com/pysal/mgwr/)
 
-The Plugin implements Geographically Weighted Regression(GWR) statistics to perform spacial analysis. Users can choose some parameters and perform action. And the results will display with style. The plugin requires MGWR (see the repository for installation instruction).
+The Plugin implements Gaussian Geographically Weighted Regression(GWR) to perform spatial analysis. Users can choose some parameters and perform action. And the results will display with style. The plugin requires MGWR (see the repository for installation instruction).
 ___
 ### Installation - Windows
 
@@ -78,9 +78,14 @@ Then check your python environment. Maybe the environment in which your QGIS is 
 ___
 ### Changeset
 
+
+##### Changeset 29/05/2022
+- Update v0.1.2. 
+- Fix matrix computing problem when extracting point coordinates from Point geometry.
+
 ##### Changeset 05/2022
 - Publish the new version v0.1.2
-- Fix some issues and update the metadata file.
+- Fix some known issues and update the metadata file.
 
 ##### Changeset 04/2022
 - Add new features. Add styles to the output layer.
